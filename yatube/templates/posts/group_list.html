@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+{%block title%}
+  Yatube
+{%endblock%}
+{%block content%}
+<div class="container py-5">
+  <h1>Лев Толстой – зеркало русской революции.</h1>
+  <p>
+    {{ group.title }}
+  </p>
+  {% for post in posts%}
+    <ul>
+      <li>
+        Автор: {{ post.author.get_full_name }}
+      </li>
+      <li>
+        Дата публикации: {{ post.pub_date }}
+      </li>
+    </ul>      
+    <p>
+      {{ post.text }}
+    </p>         
+    {% if not forloop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+</div>
+{%endblock%}
+{%block footer%}
+  <footer class="page-footer font-small blue border-top">
+    <div class="footer-copyright text-center py-3">© 2020 Copyright 
+      <p><span style="color:red">Ya</span>tube</p> 
+    </div>    
+  </footer>
+{%endblock%}

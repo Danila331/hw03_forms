@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Последние обновления на сайте{% endblock %}
+{% block header %}Последние обновления на сайте{% endblock %}
+{% block content %}
+
+  {% for post in page_obj %}
+    ...Тут вывод списка записей...
+  {% endfor %}
+
+  {% include 'posts/includes/paginator.html' %}
+  
+{% endblock %}
+{%block footer%}
+  <footer class="border-top text-center py-3">
+    <p>
+      "© 2020 Copyright "
+      <span style="color:red">Ya</span>
+      "tube"
+    </p>
+  </footer>
+{%endblock%}
