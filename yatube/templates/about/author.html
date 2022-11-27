@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-{% block title %}Об авторе проекта{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 {% block content %}
-<h1>Привет, я автор</h1>
+<h1>{{ header }}</h1>
 <p>
-  {{ just_text }} 
+  {{  text  }} 
 </p>
 {% endblock %}
 {%block footer%}
