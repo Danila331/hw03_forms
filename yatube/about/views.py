@@ -6,8 +6,6 @@ class AboutAuthorView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Об авторе проекта'
-        context['header'] = 'Привет, я автор'
         context['text'] = ('Я — увлекающийся человек, поэтому '
                            'решил освоить прогроммирование'
                            'Мне всего 15 лет, но чуствую я себя на все 20'
@@ -25,8 +23,6 @@ class AboutTechView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Технологии'
-        context['header'] = 'Вот что я умею'
         context['text'] = ('Спасибо яндекс практикуму если'
                            'бы не они я бы не смог сделать этот сайт'
                            'бы не они я бы не смог сделать этот сайт'
