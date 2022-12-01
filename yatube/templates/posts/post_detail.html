@@ -11,7 +11,7 @@
       <li class="list-group-item">
         Группа:
         {% if post.group %}
-        {{ post.group }}
+        {{ post.group.title }}
         {% else %}
         ---Пусто---
         {% endif %}
@@ -31,7 +31,7 @@
     </ul>
   </aside>
   <article class="col-12 col-md-9">
-    <p>{{ post }}</p>
+    <p>{{ post.text|linebreaks }}</p>
     {% if post.author == requser %}
     <a class="btn btn-primary" href="{% url 'posts:edit' post.id %}">редактировать пост</a>
     {% endif %}

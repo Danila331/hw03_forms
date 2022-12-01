@@ -2,9 +2,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from .models import Post, Group
 from django.core.paginator import Paginator
+
 from posts.forms import PostForm
+from .models import Post, Group
 from django.conf import settings
 
 User = get_user_model()
@@ -30,7 +31,7 @@ def _page_obj(post_list, request):
 
 def profile(request, username):
     author = get_object_or_404(User, username=username)
-    post_list = Post.objects.filter(author=author).order_by('-pub_date')
+    post_list = author.posts.all()
     page_obj = _page_obj(post_list=post_list,
                          request=request)
     template = 'posts/profile.html'
@@ -40,7 +41,7 @@ def profile(request, username):
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-    posts_count = Post.objects.filter(author=post.author).count()
+    posts_count = post.author.posts.count()
     template = 'posts/post_detail.html'
     context = {
         'post': post, 'posts_count': posts_count, 'requser': request.user}
@@ -49,7 +50,7 @@ def post_detail(request, post_id):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    post_list = Post.objects.filter(group=group).order_by('-pub_date')
+    post_list = group.posts.all().order_by('-pub_date')
     page_obj = _page_obj(post_list=post_list,
                          request=request)
     template = 'posts/group_list.html'

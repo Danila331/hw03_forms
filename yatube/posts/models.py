@@ -28,11 +28,11 @@ class Post(models.Model):
                               verbose_name='Группы',
                               blank=True,
                               null=True,
-                              related_name='posts_group',
+                              related_name='posts',
                               on_delete=models.SET_NULL, )
 
     class Meta:
         ordering = ('-pub_date',)
 
     def __str__(self):
-        return f'{str(self.text)[:15]}'
+        return self.text[:15]
